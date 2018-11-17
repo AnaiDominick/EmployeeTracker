@@ -10,74 +10,115 @@ $( document ).ready(function() {
     };
     
     firebase.initializeApp(config);
-    var database = firebase.database();
+    var dataRef = firebase.database();
+    var employeename = "";
+    var role = "";
+    var startdate = 0;
+    var monthsworked = 0;
+    var cont = 0;
+    $("#submit").click(function(event){        
+        event.preventDefault(); 
 
-    $("#submit").click(function(event){
-        event.preventDefault();        
-        var employeename = $("#employeename").val().trim();
-        var role = $("#role").val().trim();
-        var startdate = $("#startdate").val().trim();
-        var monthsworked =$("#monthsworked").val().trim();
+        employeename = $("#employeename").val().trim();
+        role = $("#role").val().trim();
+        startdate = $("#startdate").val().trim();
+        monthsworked =$("#monthsworked").val().trim();        
 
-        database.ref("/employees").push({
-            name: employeename
+        dataRef.ref().push({
+            name: employeename,
+            role: role,
+            startdate: startdate,
+            monthsworked: monthsworked,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
-
-        database.ref("/role").push({
-            role: role
-        });
-
-        database.ref("/startdate").push({
-            startdate: startdate
-        });
-
-        database.ref("/monthsworked").push({
-            monthsworked: monthsworked
-        });
-
-        database.ref("/employees").on("value", function(snapshot) {
-          
-            $("#employee-show").append(snapshot.val().name);      
-       
-          }, function(errorObject) {
-            console.log("The read failed: " + errorObject.code);
-        });
-
-        database.ref("/role").on("value", function(snapshot) {
-          
-            $("#role-show").append(snapshot.val().role);      
-       
-          }, function(errorObject) {
-            console.log("The read failed: " + errorObject.code);
-        });
-
-        database.ref("/startdate").on("value", function(snapshot) {
-          
-            $("#date-show").append(snapshot.val().startdate);      
-       
-          }, function(errorObject) {
-            console.log("The read failed: " + errorObject.code);
-        });
-
-        database.ref("/monthsworked").on("value", function(snapshot) {
-          
-            $("#months-show").append(snapshot.val().monthsworked);      
-       
-          }, function(errorObject) {
-            console.log("The read failed: " + errorObject.code);
-        });
-
-        database.ref().on("value", function(snapshot) {
-            
-            //$("#rate-show").append(a);
-            //$("#total-show").append(b);
-         
-          }, function(errorObject) {
-            console.log("The read failed: " + errorObject.code);
-          });
-
-
     });
+
+    
+
+        
+
+        dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+            // Change the HTML to reflect
+            cont++;
+            var newRow = $("<tr>").append(
+                $("<td>").text(cont),
+                $("<td>").text(snapshot.val().name),
+                $("<td>").text(snapshot.val().role),
+                $("<td>").text(snapshot.val().startdate),
+                $("<td>").text(snapshot.val().monthsworked),
+                $("<td>").text("empRate"),
+                $("<td>").text("empBilled")
+            );
+            $("tbody").append(newRow);
+
+            $("#name-display").text(snapshot.val().name);
+            $("#email-display").text(snapshot.val().email);
+            $("#age-display").text(snapshot.val().age);
+            $("#comment-display").text(snapshot.val().comment);
+        });
+
+        
+        
+        // full list of items to the well
+        // $("#full-member-list").append("<div class='well'><span class='member-name'> " +
+        //   childSnapshot.val().name +
+        //   " </span><span class='member-email'> " + childSnapshot.val().email +
+        //   " </span><span class='member-age'> " + childSnapshot.val().age +
+        //   " </span><span class='member-comment'> " + childSnapshot.val().comment +
+        //   " </span></div>");
+  
+        // Handle the errors
+      }, function(errorObject) {
+        console.log("Errors handled: " + errorObject.code);
+    });
+        
+        // var counter = 0;
+        // database.ref("/employees").on("child_added", function(snapshot) {
+        //     counter++;
+        //     //alert(counter);
+        //     //$("#employee-show").append(w);      
+        //     console.log(snapshot.val().name);
+        //     $("#employee-show").append(snapshot.val().name);
+
+        //   }, function(errorObject) {
+        //     console.log("The read failed: " + errorObject.code);
+        // });
+
+        // database.ref("/role").on("value", function(snapshot) {
+          
+        //     $("#role-show").append(snapshot.val().role);      
+       
+        //   }, function(errorObject) {
+        //     console.log("The read failed: " + errorObject.code);
+        // });
+
+        // database.ref("/startdate").on("value", function(snapshot) {
+          
+        //     $("#date-show").append(snapshot.val().startdate);      
+       
+        //   }, function(errorObject) {
+        //     console.log("The read failed: " + errorObject.code);
+        // });
+
+        // database.ref("/monthsworked").on("value", function(snapshot) {
+          
+        //     $("#months-show").append(snapshot.val().monthsworked);      
+       
+        //   }, function(errorObject) {
+        //     console.log("The read failed: " + errorObject.code);
+        // });
+
+        // database.ref().on("value", function(snapshot) {
+            
+        //     //$("#rate-show").append(a);
+        //     //$("#total-show").append(b);
+         
+        //   }, function(errorObject) {
+        //     console.log("The read failed: " + errorObject.code);
+        //   });
+
+
+
 
 
 
@@ -85,4 +126,3 @@ $( document ).ready(function() {
 
 
     
-});
