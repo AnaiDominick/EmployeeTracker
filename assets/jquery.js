@@ -1,10 +1,19 @@
 $( document ).ready(function() {
 
-   
+    var config = {
+        apiKey: "AIzaSyDy8ZWJV-tJFieNqMRUqlu5Cc8WycxOMu4",
+        authDomain: "gohan-e2ddf.firebaseapp.com",
+        databaseURL: "https://gohan-e2ddf.firebaseio.com",
+        projectId: "gohan-e2ddf",
+        storageBucket: "gohan-e2ddf.appspot.com",
+        messagingSenderId: "1010605377721"
+    };
+    
+    firebase.initializeApp(config);
+    var database = firebase.database();
 
     $("#submit").click(function(event){
-        event.preventDefault();
-        clickCounter++;
+        event.preventDefault();        
         var employeename = $("#employeename").val().trim();
         var role = $("#role").val().trim();
         var startdate = $("#startdate").val().trim();
