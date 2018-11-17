@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Employee Data Management+</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/jquery.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4"> <i class="far fa-newspaper"></i> Employee Data Management</h1>
+                <p>A comprehensive Directory of Employee Billable Hours</p>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">Months Worked</th>
+                    <th scope="col">Montly Rate ($)</th>
+                    <th scope="col">Total Billed ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td><div id="employee-show"></div></td>
+                    <td><div id="role-show"></div></td>
+                    <td><div id="date-show"></div></td>
+                    <td><div id="months-show"></div></td>
+                    <td><div id="rate-show"></div></td>
+                    <td><div id="total-show"></div></td>
+                </tr>
+                
+        
+
+            </tbody>
+        </table>
+
+
+        <form class="form-group">
+
+            <div class="card">
+                <div class="card-header">Add Employees </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="exampleSearch">Employee Name:</label>
+                    <input type="name" class="form-control" id="employee Name">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleSearch">Role:</label>
+                    <input type="name" class="form-control" id="role">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleStartYear">Start Date (MM/DD/YYYY):</label>
+                    <input type="year" class="form-control" id="startdate">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleEndYear">Months Rate:</label>
+                    <input type="year" class="form-control" id="monthsworked">
+                </div>
+
+                <div class='btn-group' role='group' aria-label='Basic example'>
+                    <button type='submit' class='btn btn-primary' id="submit">Submit</button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+
+    </div>
+
+</body>
+
+</html>
