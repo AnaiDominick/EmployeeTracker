@@ -1,12 +1,12 @@
 $( document ).ready(function() {
 
     var config = {
-        apiKey: "AIzaSyDy8ZWJV-tJFieNqMRUqlu5Cc8WycxOMu4",
-        authDomain: "gohan-e2ddf.firebaseapp.com",
-        databaseURL: "https://gohan-e2ddf.firebaseio.com",
-        projectId: "gohan-e2ddf",
-        storageBucket: "gohan-e2ddf.appspot.com",
-        messagingSenderId: "1010605377721"
+        apiKey: "AIzaSyADHNsd08_sJNMQYiUoGmIPAZjr5h083KA",
+        authDomain: "anai-8b424.firebaseapp.com",
+        databaseURL: "https://anai-8b424.firebaseio.com",
+        projectId: "anai-8b424",
+        storageBucket: "anai-8b424.appspot.com",
+        messagingSenderId: "769078964438"
     };
     
     firebase.initializeApp(config);
