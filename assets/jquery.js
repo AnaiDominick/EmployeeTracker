@@ -28,7 +28,7 @@ $( document ).ready(function() {
 
         database.ref("/employees").on("value", function(snapshot) {
           
-            $("#employee-show").text(snapshot.val().name);      
+            $("#employee-show").append(snapshot.val().name);      
        
           }, function(errorObject) {
             console.log("The read failed: " + errorObject.code);
@@ -36,7 +36,7 @@ $( document ).ready(function() {
 
         database.ref("/role").on("value", function(snapshot) {
           
-            $("#role-show").text(snapshot.val().role);      
+            $("#role-show").append(snapshot.val().role);      
        
           }, function(errorObject) {
             console.log("The read failed: " + errorObject.code);
@@ -44,7 +44,7 @@ $( document ).ready(function() {
 
         database.ref("/startdate").on("value", function(snapshot) {
           
-            $("#date-show").text(snapshot.val().startdate);      
+            $("#date-show").append(snapshot.val().startdate);      
        
           }, function(errorObject) {
             console.log("The read failed: " + errorObject.code);
@@ -52,15 +52,16 @@ $( document ).ready(function() {
 
         database.ref("/monthsworked").on("value", function(snapshot) {
           
-            $("#months-show").text(snapshot.val().monthsworked);      
+            $("#months-show").append(snapshot.val().monthsworked);      
        
           }, function(errorObject) {
             console.log("The read failed: " + errorObject.code);
         });
 
         database.ref().on("value", function(snapshot) {
-            $("#rate-show")
-            $("#total-show")
+            
+            //$("#rate-show").append(a);
+            //$("#total-show").append(b);
          
           }, function(errorObject) {
             console.log("The read failed: " + errorObject.code);
